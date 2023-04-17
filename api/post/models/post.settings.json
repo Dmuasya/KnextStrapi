@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "post",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 170
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "body": {
+      "type": "text",
+      "minLength": 10
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "posts"
+    },
+    "categories": {
+      "collection": "categorie",
+      "via": "posts"
+    },
+    "category": {
+      "model": "categorie"
+    },
+    "src": {
+      "type": "text",
+      "required": true
+    },
+    "content_type": {
+      "type": "string",
+      "default": "article"
+    },
+    "image_url": {
+      "type": "text",
+      "required": true
+    },
+    "storage_id": {
+      "type": "text",
+      "required": true
+    },
+    "likes": {
+      "collection": "likes",
+      "via": "post"
+    },
+    "comments": {
+      "collection": "comment",
+      "via": "post"
+    },
+    "image_type": {
+      "type": "string",
+      "default": "p",
+      "required": true
+    },
+    "views": {
+      "type": "biginteger",
+      "default": "0",
+      "required": true
+    },
+    "on_promo": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
