@@ -1,5 +1,5 @@
-# Strapi application
+# Strapi and Knex
 
-A quick description of your strapi application
+Go to the project's directory and type `cmd` in the file explorer to start command prompt then type:
 
 `npm start`
