@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "name": "post"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 5,
+      "maxLength": 170
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "body": {
+      "type": "text",
+      "minLength": 10
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::categorie.categorie",
+      "mappedBy": "posts"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::categorie.categorie"
+    },
+    "src": {
+      "type": "text",
+      "required": true
+    },
+    "content_type": {
+      "type": "string",
+      "default": "article"
+    },
+    "image_url": {
+      "type": "text",
+      "required": true
+    },
+    "storage_id": {
+      "type": "text",
+      "required": true
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::like.like",
+      "mappedBy": "post"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    },
+    "image_type": {
+      "type": "string",
+      "default": "p",
+      "required": true
+    },
+    "views": {
+      "type": "biginteger",
+      "default": "0",
+      "required": true
+    },
+    "on_promo": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
